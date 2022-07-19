@@ -2,8 +2,8 @@
 {
     internal class Program
     {
-         static double num1;
-         static double num2;
+         static double number1;
+         static double number2;
          static string operation;
 
         public static void Main(string[] args)
@@ -13,12 +13,12 @@
 
             while (IsCalculatorOn)
             {
-                num1 = GetNumberInput("Please enter a number");
-                num2 = GetNumberInput("Please enter a second number");
+                number1 = GetNumberInput("Please enter a number");
+                number2 = GetNumberInput("Please enter a second number");
 
                 GetOperationInput();
 
-                Calculation();
+                DoCalculation();
 
                 Console.WriteLine("Type Q to quit or any other input to start a new calculation");
                 if (Console.ReadLine().ToLower() == "q") IsCalculatorOn = false; 
@@ -50,34 +50,33 @@
             }
         }
 
-        private static void Calculation()
+        private static void DoCalculation()
         {
             double result = 0;
 
             switch (operation)
             {
                 case "/":
-                    while (num2 == 0)
+                    while (number2 == 0)
                     {
-                        num2 = GetNumberInput("You can't divide by zero baka! \nPlease re-enter your second number");
+                        number2 = GetNumberInput("You can't divide by zero baka! \nPlease re-enter your second number");
                     }
-                    result = num1 / num2;
+                    result = number1 / number2;
                     break;
                 case "*":
-                    result = num1 * num2;
+                    result = number1 * number2;
                     break;
                 case "+":
-                    result = num1 + num2;
+                    result = number1 + number2;
                     break;
                 case "-":
-                    result = num1 - num2;
+                    result = number1 - number2;
                     break;
                 case "^":
-                    result = Math.Pow(num1, num2);
+                    result = Math.Pow(number1, number2);
                     break;
             }
-            Console.WriteLine($"{num1} {operation} {num2} = {result}");
+            Console.WriteLine($"{number1} {operation} {number2} = {result}");
         }
     }
-
 }
